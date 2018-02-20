@@ -1,0 +1,83 @@
+.filter{
+  position: fixed;
+  width: 23.5%;
+  h3{
+    font-size:22px;
+    font-weight: bold;
+    color: color-text;
+    padding: 15px 18px 10px;
+  }
+  .search{
+    padding 13px 18px 15px;
+
+    margin-bottom: 10px;
+    .title{
+      color: color-segundary;
+      font-size: 18px;
+      margin-bottom: 4px;
+      position: relative;
+      cursor: pointer;
+    }
+    .title:after{
+      content: "";
+      position: absolute;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-bottom: 8px solid color-segundary;
+      top: 3px;
+      right: 5px;
+    }
+    .title.collapse:after{
+      content: "";
+      position: absolute;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 8px solid color-segundary;
+      border-bottom: 0px solid transparent;
+      top: 3px;
+      right: 5px;
+    }
+  }
+  .name-search{
+    input{
+      width: calc(98% - 115px); //99% - tamaño del button
+    }
+  }
+}
+
+.conventions{
+  width: 100%;
+  margin-top: 15px;
+  b{
+    padding-right: calc(18% - 10px) //(99% / 5:total de estrellas) - tamaño de b;
+    padding-left: 4%;
+
+  }
+  b:last-child{
+    padding-right: 0;
+  }
+}
+
+//estilos libreria nouislider
+.noUi-horizontal .noUi-handle {
+  width: 28px !important;
+  top: -9px !important;
+}
+.nouislider{
+  margin: 15px;
+  margin-top: 10px !important;
+}
+.noUi-connect {
+  background: color-complementary !important;
+}
+.noUi-horizontal {
+    height: 10px !important;
+}
+
+
+@media(max-width: 540px){
+  .filter {
+    position: static;
+    width: auto;
+  }
+}

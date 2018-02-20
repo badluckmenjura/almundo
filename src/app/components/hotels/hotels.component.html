@@ -1,0 +1,33 @@
+<div class="hotel box" *ngFor="let hotel of hotels | nameFilter:name | starsFilter:stars">
+  <div class="grid grid-stretch">
+    <div class="grid-desk-col-3 grid-movil-col-12">
+      <div class="image" [ngStyle]="{'background-image': 'url(assets/img/hotels/'+hotel.image+')'}"></div>
+      <!-- <img src="assets/img/hotels/{{hotel.image}}" alt=""> -->
+    </div>
+    <div class="grid-desk-col-6 grid-movil-col-12">
+      <div class="hotel-container">
+        <h3>{{hotel.name}}</h3>
+        <div class="stars">
+          <i class="icon-star" [ngClass]="{'star-filled': hotel.stars >= 1}"></i>
+          <i class="icon-star" [ngClass]="{'star-filled': hotel.stars >= 2}"></i>
+          <i class="icon-star" [ngClass]="{'star-filled': hotel.stars >= 3}"></i>
+          <i class="icon-star" [ngClass]="{'star-filled': hotel.stars >= 4}"></i>
+          <i class="icon-star" [ngClass]="{'star-filled': hotel.stars >= 5}"></i>
+        </div>
+        <div class="amenities">
+          <i class="icon-{{amenity}}" [ngClass]="{'star-filled': hotel.stars >= 5}" *ngFor="let amenity of hotel.amenities"></i>
+        </div>
+      </div>
+    </div>
+    <div class="grid-desk-col-3 details grid-movil-col-12">
+      <div class="price-container">
+        <p>Precio por Noche por Habitación</p>
+        <div class="price">
+          <b>ARS</b>
+          <h2>{{hotel.price}}</h2>
+        </div>
+        <button type="button" name="button" class="btn btn-block">Ver Hotel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="filter box">
+  <h3>Filtros</h3>
+  <div class="search name-search">
+    <div class="title" (click)="collapseNameSearch()" [ngClass]="{'collapse': !searchName}">
+      <h4><i class="icon-search" ng2-ngClass></i>Nombre del Hotel</h4>
+    </div>
+    <div class="input-group" *ngIf="searchName">
+      <input type="text" name="" value="" placeholder="Ingrese el nombre del hotel" [(ngModel)]="name">
+      <button type="button" name="button" class="btn" (click)="filterByName(name)">Buscar</button>
+    </div>
+  </div>
+  <div class="search stars-search">
+    <div class="title" (click)="collapseStarsSearch(searchStars)" [ngClass]="{'collapse': !searchStars}">
+      <h4><i class="icon-star"></i>Estrellas</h4>
+    </div>
+    <div class="" *ngIf="searchStars">
+      <div class="conventions">
+        <b>1</b>
+        <b>2</b>
+        <b>3</b>
+        <b>4</b>
+        <b>5</b>
+      </div>
+      <nouislider 
+        [connect]="true"
+        [min]="1"
+        [max]="5"
+        [step]="1"
+        [(ngModel)]="someRange"
+        (ngModelChange)="filterByStars(someRange)"
+        class="nouislider">
+      </nouislider>
+    </div>
+  </div>
+</div>

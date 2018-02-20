@@ -1,0 +1,9 @@
+<div class="main-content grid">
+  {{fiterName}}
+  <div class="grid-desk-col-3 grid-movil-col-12">
+    <app-filter (fiterName)="fiterByName($event)" (fiterStars)="fiterByStars($event)"></app-filter>
+  </div>
+  <div class="grid-desk-col-9 grid-movil-col-12">
+    <app-hotels [hotels]="hotels" [name]="name" [stars]="stars"></app-hotels>
+  </div>
+</div>

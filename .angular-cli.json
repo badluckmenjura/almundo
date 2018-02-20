@@ -19,9 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "css/styles.css",
+        "css/almundo.css",
+        "../node_modules/nouislider/distribute/nouislider.min.css"
+
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/nouislider/distribute/nouislider.min.js",
+        "../node_modules/ng2-nouislider/src/nouislider.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

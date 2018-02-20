@@ -1,0 +1,22 @@
+input{
+  border: 1px solid rgba(0,0,0,0.3);
+  background: #ffffff;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+.input-group{
+  display:table;
+  width: 100%;
+  input, button{
+    display: table-cell;
+    vertical-align: middle;
+    border-radius: 0px;
+  }
+  input:first-child, button:first-child{
+    border-radius: 4px 0px 0px 4px;
+  }
+  input:last-child, button:last-child{
+    border-radius: 0px 4px 4px 0px;
+  }
+}
