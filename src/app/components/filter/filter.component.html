@@ -13,7 +13,7 @@
     <div class="title" (click)="collapseStarsSearch(searchStars)" [ngClass]="{'collapse': !searchStars}">
       <h4><i class="icon-star"></i>Estrellas</h4>
     </div>
-    <div class="" *ngIf="searchStars">
+    <div class="" *ngIf="searchStars" >
       <div class="conventions">
         <b>1</b>
         <b>2</b>
@@ -21,7 +21,7 @@
         <b>4</b>
         <b>5</b>
       </div>
-      <nouislider 
+      <nouislider
         [connect]="true"
         [min]="1"
         [max]="5"

@@ -1,11 +1,14 @@
-let express = require('express');
-let app = express();
-let engines = require('consolidate');
-let mongoose = require('mongoose');
+const express = require('express');
+const engines = require('consolidate');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
 
-app.engine('html', engines.nunjucks);
-app.set('view engine', 'html');
-app.set('views', __dirname + '/dist');
+const app = express();
+
+app.use(cors());
+
+app.use(express.static(path.join(__dirname, './dist')));
 
 
 mongoose.Promise = global.Promise;
@@ -16,9 +19,10 @@ mongoose.connect('mongodb://localhost:27017/almundo')
   })
   .catch(err => console.log(err));
 
-  app.get('/', (req, res) => {
-    res.render('index', {});
-  });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './dist/index.html'));
+});
+
 
 
 app.listen(5460);
