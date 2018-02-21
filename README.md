@@ -4,7 +4,7 @@ Poryecto generado mediante [Angular CLI](https://github.com/angular/angular-cli)
 
 ## dataBase
 
-Este proyecto interactua con una base de datos no relacional [MOongoDB](https://www.mongodb.com/), antes de iniciar el proyecto ejecute em consola de comandos : `mongoimport --db almundo --collection hotels --type json --file data.json --jsonArray` dentro de la carpeta `./config` ubicada en la raiz del proyecto
+Este proyecto interactua con una base de datos no relacional [MOongoDB](https://www.mongodb.com/), antes de iniciar el proyecto ejecute en consola de comandos : `mongoimport --db almundo --collection hotels --type json --file data.json --jsonArray` dentro de la carpeta `./config` ubicada en la raiz del proyecto
 
 ## server
 

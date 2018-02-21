@@ -1,5 +1,7 @@
-const mongoose = require('mongoose');
-const db = mongoose.connection;
+'use strict';
+
+const ObjectId = require('mongoose').Types.ObjectId;
+const Hotel = require('./models');
 
 /**
  * [devolver todos los hoteles]
@@ -8,20 +10,14 @@ const db = mongoose.connection;
  * @return {[array]}     [listado de hotels]
  */
 let getHotels = (req, res) => {
-  db.collection('hotels').find({}).toArray((err, docs) => {
-    if(err) {
-      throw err;
-      return res.status(400).send(err);
-    }
-    if (docs.length < 1) {
-      let hotels = [];
-      return res.status(200).send(hotels);
-    }else{
-      return res.status(200).send(docs);
-    }
-  });
+  Hotel.find({})
+    .then( hotels =>{
+        return res.status(200).send(hotels);
+    })
+    .catch( err =>{
+        return res.status(400).send(err);
+    })
 };
-
 
 
 /**
@@ -31,13 +27,13 @@ let getHotels = (req, res) => {
  * @return {[object]}     [hotel]
  */
 let getHotel = (req, res) => {
-  db.collection('hotels').findOne({id: req.params.id },(err, doc) => {
-      if(err) {
-        throw err;
-        return res.status(400).send(err);
-      }
-      res.status(200).send(doc);
-    });
+ Hotel.findOne({id: req.params.id })
+     .then( hotel =>{
+         return res.status(200).send(hotel);
+     })
+     .catch( err =>{
+         return res.status(400).send(err);
+     });
 };
 
 /**
@@ -47,30 +43,47 @@ let getHotel = (req, res) => {
  * @return {[array]}     [listado de hotels]
  */
 let deleteHotel = (req, res) => {
-  db.collection('hotels').remove({id: req.params.id }, (err, result) =>{
-    if(err) {
-      throw err;
-      return res.status(400).send(err);
-    }
-    res.status(200).send((result.result.ok === 1) ? {msg:'success'} : {msg:'error'});
-  });
+  Hotel.remove({id: req.params.id })
+      .then( hotel =>{
+          return res.status(200).send(hotel);
+      })
+      .catch( err =>{
+          return res.status(400).send(err);
+      });
 };
 
 
 /**
  * [guardado de un hotel]
- * @param  {[type]}  req [description]
- * @param  {[type]}  res [description]
- * @return {[array]}     [listado de hotels]
+ * @param  {[type]}  req  [description]
+ * @param  {[type]}  res  [description]
+ * @return {[strint]}     [resultado de la operacion]
  */
 let saveHotel = (req, res) => {
-  db.collection('hotels').save(req.body, (err, result) =>{
-      if(err) {
-        throw err;
+    let hotel = new Hotel(req.body);
+    hotel.save(req.body)
+    .then( hotel =>{
+        return res.status(200).send(hotel);
+    })
+    .catch( err =>{
         return res.status(400).send(err);
-      }
-    res.status(200).send((result.result.ok === 1) ? {msg:'success'} : {msg:'error'});
-  });
+    })
+};
+
+/**
+ * [edicion de hotel por id]
+ * @param  {[type]}  req [description]
+ * @param  {[type]}  res [description]
+ * @return {[strint]}     [resultado de la operacion]
+ */
+let updateHotel = (req, res) => {
+    Hotel.findOneAndUpdate({id: req.params.id }, {$set:req.body}, {  new: true })
+    .then( hotel =>{
+        return res.status(200).send(hotel);
+    })
+    .catch( err =>{
+        return res.status(400).send(err);
+    })
 };
 
 
@@ -78,5 +91,6 @@ module.exports = {
   getHotels,
   getHotel,
   deleteHotel,
-  saveHotel
+  saveHotel,
+  updateHotel
 };

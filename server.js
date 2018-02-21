@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const app = require('./server/express');
 const http = require('http');
@@ -28,3 +30,4 @@ mongoose.connect(db)
 
   })
   .catch(err => console.log(err));
+  

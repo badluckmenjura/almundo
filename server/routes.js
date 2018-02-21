@@ -1,3 +1,5 @@
+'use strict';
+
 const Services = require('./services');
 const express = require('express');
 
@@ -10,5 +12,6 @@ api.route('/hotels')
 api.route('/hotels/:id')
   .get(Services.getHotel)
   .delete(Services.deleteHotel)
+  .put(Services.updateHotel)
 
 module.exports = api;
