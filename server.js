@@ -9,6 +9,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || '4071';
 const db = process.env.MONGO || 'mongodb://localhost:27017/almundo';
 
+
 if (process.env.NODE_ENV === 'development') {
   require('dotenv').config();
 }
@@ -30,4 +31,3 @@ mongoose.connect(db)
 
   })
   .catch(err => console.log(err));
-  
