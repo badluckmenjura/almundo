@@ -8,7 +8,6 @@ api.route('/hotels')
   .post(Services.saveHotel)
 
 api.route('/hotels/:id')
-  .put(Services.updateHotel)
   .get(Services.getHotel)
   .delete(Services.deleteHotel)
 
