@@ -72,6 +72,8 @@ let saveHotel = (req, res) => {
     res.status(200).send((result.result.ok === 1) ? {msg:'success'} : {msg:'error'});
   });
 };
+
+
 module.exports = {
   getHotels,
   getHotel,
