@@ -18,7 +18,11 @@ export class HomeComponent implements OnInit {
   constructor( private _hotelsService:HotelsService) {}
 
   ngOnInit() {
-    this.hotels = this._hotelsService.getHotels();
+    this._hotelsService.getHotels()
+      .subscribe(result => {
+        console.log("sii2",result)
+        this.hotels = result;
+      });
+    console.log("this.hotels comp",this.hotels)
   }
-
 }

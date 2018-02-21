@@ -5,8 +5,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './filter.component.html'
 })
 export class FilterComponent implements OnInit {
-  private searchName:boolean = true;
-  private searchStars:boolean = true;
+  public searchName:boolean = true;
+  public searchStars:boolean = true;
   public someRange:number[] = [1,5];
   public name:string;
   @Output() public fiterName = new EventEmitter();
@@ -15,10 +15,10 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
   }
-  private collapseStarsSearch(){
+  public collapseStarsSearch(){
     this.searchStars = !this.searchStars;
   }
-  private collapseNameSearch(){
+  public collapseNameSearch(){
     this.searchName = !this.searchName;
   }
   public filterByName(filter: string) {
